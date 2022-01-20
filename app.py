@@ -13,7 +13,7 @@ app.config['MAIL_USE_SSL'] = True
 
 mail = Mail(app) 
 
-@app.route('/dashboard')
+@app.route('/')
 def dashboard():
     return render_template('dashboard.html')
     

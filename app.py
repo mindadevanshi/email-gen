@@ -35,7 +35,8 @@ def login():
             msg.body = 'Hi, You have succesfully logged in.' 
             mail.send(msg) 
             return render_template('home.html',username=username)
-    return render_template('login.html', error=error)
+    else:
+        return render_template('login.html', error=error)
     
 
 if __name__ == "__main__":

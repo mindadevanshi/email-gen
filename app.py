@@ -22,6 +22,7 @@ mail = Mail(app)
 db = SQLAlchemy(app)
 
 class User(db.Model):
+    __tablename__ = '{schema_name}.user'
     name= db.Column(db.String(15), unique=True)
     username = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50), unique=True, primary_key=True)

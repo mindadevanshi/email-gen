@@ -20,23 +20,18 @@ def dashboard():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        gmail_id = request.form['gmail_id']
-        if username != 'abc.xyz@login.com' or password != '1234':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            # return redirect(url_for('dashboard'))
+        with app.app_context():
             re = []
-            re.append(gmail_id)
-            msg = Message('Login mail', sender = 'devanshi16.minda@gmail.com', recipients = re)#['devanshi16.minda@gmail.com'])  
+            re.append(username)
+            msg = Message('Login mail', sender = 'devanshi16.minda@gmail.com', recipients = re)  
             msg.body = 'Hi, You have succesfully logged in.' 
             mail.send(msg) 
             return render_template('home.html',username=username)
     else:
-        return render_template('login.html', error=error)
+        return render_template('login.html')
     
 
 if __name__ == "__main__":

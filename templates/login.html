@@ -9,7 +9,7 @@
             <br>
             <form action="" method="post">
                 <div class="mb-2">
-                    <label for="InputEmail" class="form-label">Login Id</label>
+                    <label for="InputEmail" class="form-label">Email Id</label>
                     <input type="email" placeholder="Username" name="username" value="{{request.form.username }}" class="form-control" id="InputEmail" aria-describedby="emailHelp">
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
@@ -17,15 +17,8 @@
                     <label for="InputPassword" class="form-label">Password</label>
                     <input type="password" placeholder="Password" name="password" value="{{request.form.password }}" class="form-control" id="InputPassword">
                 </div>
-                <div class="mb-2">
-                    <label for="InputEmail1" class="form-label">G-mail ID</label>
-                    <input type="email" placeholder="Username" name="gmail_id" value="{{request.form.gmail_id }}" class="form-control" id="InputEmail1">
-                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            {%if error%}
-            <p class="error"><strong>Error:</strong> {{ error }}
-            {%endif%}     
+            </form>   
         </div>      
     </body>
 </html>

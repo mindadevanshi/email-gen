@@ -28,26 +28,6 @@ class User(db.Model):
     email = db.Column(db.String(50), unique=True, primary_key=True)
     password = db.Column(db.String(256), unique=True)
     
-    def __init__(self, name, username, email, password):
-        self.firstname = firstname.title()
-        self.lastname = lastname.title()
-        self.email = email.lower()
-        self.set_password(password)
-    
-    def set_password(self, password):
-        self.pwdhash = (password)
-
-    def check_password(self, password):
-        return password
-    
-    
-    db.create_all()
-    db.session.commit()
-    admin = User('admi2', 'admin@ex1ample.com', 'admin', 'admin2@example.com')
-    db.session.add(admin)
-    db.session.commit()
-
-    
     
 @app.route('/')
 def dashboard():
@@ -105,4 +85,5 @@ def logout():
     
 if __name__ == "__main__":
     db.create_all()
+    db.session.commit()
     app.run(debug=True)

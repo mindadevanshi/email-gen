@@ -21,8 +21,8 @@ mail = Mail(app)
 
 db = SQLAlchemy(app)
 
-class User(db.Model):
-    __tablename__ = 'user'
+class User1(db.Model):
+    __tablename__ = 'user1'
     name= db.Column(db.String(15), unique=True)
     username = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50), unique=True, primary_key=True)
@@ -38,19 +38,19 @@ def dashboard():
 def login():
     form = LoginForm(request.form)
     if request.method == 'POST' and form.validate:
-        user = User.query.filter_by(email = form.email.data).first()
-        if user:
-            if check_password_hash(user.password, form.password.data):
+        user1 = User1.query.filter_by(email = form.email.data).first()
+        if user1:
+            if check_password_hash(user1.password, form.password.data):
                 flash('You have successfully logged in.', "success")
                 session['logged_in'] = True
-                session['email'] = user.email 
-                session['username'] = user.username
+                session['email'] = user1.email 
+                session['username'] = user1.username
                 re = []
-                re.append(user.email)
-                msg = Message('Login mail', sender = 'devanshi16.minda@gmail.com', recipients = re)#['devanshi16.minda@gmail.com'])  
+                re.append(user1.email)
+                msg = Message('Login mail', sender = 'devanshi16.minda@gmail.com', recipients = re) 
                 msg.body = 'Hi, You have succesfully created an account.' 
                 mail.send(msg) 
-                return render_template('home.html',username=user.username)
+                return render_template('home.html',username=user1.username)
             else:
                 flash('Username or Password Incorrect', "Danger")
                 return redirect(url_for('login'))
@@ -64,7 +64,7 @@ def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
         hashed_password = generate_password_hash(form.password.data, method='sha256')
-        new_user = User(
+        new_user = User1(
             name = form.name.data, 
             username = form.username.data, 
             email = form.email.data, 

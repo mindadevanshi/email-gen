@@ -7,7 +7,7 @@ from forms import LoginForm, RegisterForm
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '!9m@S-dThyIlW[pHQbN^'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'register.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://bgvlrpiwwdaddu:98d51038aca03a85c6e564a2fb2676fbcba92c14514f73304247d98d0cff2a40@ec2-35-174-118-71.compute-1.amazonaws.com:5432/d1d0mro4faj9jl'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
  
 app.config['MAIL_SERVER']='smtp.gmail.com'  
